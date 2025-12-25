@@ -259,6 +259,6 @@ class UserController extends Controller
         ]);
 
         flash()->addSuccess('Password changed successfully!');
-        return redirect()->route('user-profile.change-password');
+        return redirect()->route('users.show', $user->id);
     }
 }
