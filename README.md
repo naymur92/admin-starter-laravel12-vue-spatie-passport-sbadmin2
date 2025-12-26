@@ -1,6 +1,6 @@
 # Security World
 
-A secure Laravel application with advanced security features including OAuth2 authentication, role-based access control, file encryption, activity logging, and login tracking.
+A secure Laravel application with OAuth2 authentication, role-based access control, file encryption, activity logging, login tracking, and configurable settings management.
 
 ## Features
 
@@ -10,9 +10,6 @@ A secure Laravel application with advanced security features including OAuth2 au
 -   **Activity Logging** - Comprehensive audit trail of user actions
 -   **Login Tracking** - Track user login history with IP and device information
 -   **Settings Management** - Configurable application settings with caching and backup
--   **Two-Factor Authentication (2FA)** - Enhanced security with TOTP-based 2FA
--   **IP Whitelisting/Blacklisting** - Control access based on IP addresses
--   **Session Management** - Track and manage active user sessions
 -   **Notifications** - Flash notifications for user feedback
 
 ## Technologies
@@ -49,13 +46,11 @@ See the [API Documentation](docs/API_DOCUMENTATION.md) for API usage.
 -   OAuth2 password grant authentication
 -   Token-based API authentication
 -   Role and permission-based access control
--   Two-factor authentication (TOTP)
 
 ### Data Protection
 
 -   AES-256 file encryption
 -   Secure file storage and retrieval
--   Encrypted database fields
 -   Secure password hashing
 
 ### Monitoring & Auditing
@@ -63,11 +58,9 @@ See the [API Documentation](docs/API_DOCUMENTATION.md) for API usage.
 -   Comprehensive activity logging
 -   Login history tracking
 -   IP and device detection
--   Session management
 
 ### Access Control
 
--   IP whitelisting and blacklisting
 -   Role-based permissions
 -   Route-level access control
 -   Middleware protection
