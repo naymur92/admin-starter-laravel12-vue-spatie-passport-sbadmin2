@@ -56,7 +56,5 @@ class Handler extends ExceptionHandler
         return redirect()
             ->guest(route('login'))
             ->with('error', 'Your session has expired or you have been logged out.');
-
-
     }
 }

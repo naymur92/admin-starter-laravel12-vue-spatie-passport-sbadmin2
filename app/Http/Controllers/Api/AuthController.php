@@ -60,7 +60,7 @@ class AuthController extends Controller
         ]);
 
         // Find user for login tracking
-        $user = User::where('email', $request->email)->first();
+        $user = User::where('email', $request->email)->where('is_active', 1)->where('type', 4)->first();
 
         // handle response
         if ($response->successful()) {

@@ -13,8 +13,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        // Disable Passport's built-in routes
+        Passport::ignoreRoutes();
+
+        $this->app->singleton(
+            \Illuminate\Contracts\Debug\ExceptionHandler::class,
+            \App\Exceptions\Handler::class
+        );
     }
+
 
     /**
      * Bootstrap any application services.
