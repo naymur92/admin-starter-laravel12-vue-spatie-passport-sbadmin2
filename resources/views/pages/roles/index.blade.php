@@ -32,7 +32,7 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-bordered table-sm text-center" id="dataTable" width="100%">
+                            <table class="table table-bordered table-striped table-sm text-center" id="dataTable" width="100%">
                                 <thead class="text-white bg-primary">
                                     <tr>
                                         <th style="width: 70px;">SL No</th>
@@ -56,12 +56,7 @@
                                                     @endcan
                                                     @if ($item->name != 'Super Admin')
                                                         @can('role-delete')
-                                                            <form action="{{ route('roles.destroy', $item->id) }}" method="post"
-                                                                onsubmit="swalConfirmationOnSubmit(event, 'Are you sure you want to delete this role?')">
-                                                                @csrf
-                                                                @method('delete')
-                                                                <x-icon.trash onclick="this.closest('form').requestSubmit()" title="Delete" />
-                                                            </form>
+                                                            <x-icon.trash onclick="confirmDelete({{ $item->id }}, '{{ $item->name }}')" title="Delete" />
                                                         @endcan
                                                     @endif
                                                 </div>
@@ -81,9 +76,29 @@
         </div>
     </div>
 
+    <!-- Delete Form (hidden) -->
+    <form id="deleteForm" method="POST" style="display: none;">
+        @csrf
+        @method('DELETE')
+    </form>
+
     <!-- Add Role Modal (Vue Component) -->
     <role-create-modal :permissions='@json($permissions)' :create-url="'{{ route('roles.store') }}'"></role-create-modal>
 
     <!-- Edit Role Modal (Vue Component) -->
     <role-edit-modal :permissions='@json($permissions)' :update-url="'{{ route('roles.update', 0) }}'"></role-edit-modal>
 @endsection
+
+@push('scripts')
+    <script>
+        function confirmDelete(roleId, roleName) {
+            swalConfirmation(`Are you sure you want to delete the role "${roleName}"?`).then((result) => {
+                if (result.isConfirmed) {
+                    const form = document.getElementById('deleteForm');
+                    form.action = `/admin/roles/${roleId}`;
+                    form.submit();
+                }
+            });
+        }
+    </script>
+@endpush

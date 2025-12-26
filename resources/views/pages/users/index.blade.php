@@ -37,7 +37,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="table-responsive">
-                            <table class="table table-bordered table-hover text-nowrap text-center align-middle" id="dataTable" width="100%" cellspacing="0">
+                            <table class="table table-bordered table-striped table-hover text-nowrap text-center align-middle" id="dataTable" width="100%" cellspacing="0">
 
                                 <colgroup>
                                     <col style="width: 10%;">

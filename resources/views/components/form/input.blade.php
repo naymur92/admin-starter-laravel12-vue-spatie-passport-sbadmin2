@@ -47,6 +47,6 @@
 
 @error($name)
     <span class="invalid-feedback" role="alert">
-        {{ $message }}
+        <strong>{{ $message }}</strong>
     </span>
 @enderror

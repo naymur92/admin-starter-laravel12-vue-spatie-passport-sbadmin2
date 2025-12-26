@@ -37,7 +37,7 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table data-page-length='25' class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+                            <table data-page-length='25' class="table table-bordered table-striped text-center" id="dataTable" width="100%" cellspacing="0">
                                 <thead class="text-white bg-primary">
                                     <tr>
                                         <th style="width: 70px;">SL No</th>
@@ -54,12 +54,7 @@
                                             <td>
                                                 @if ($item->id > 8)
                                                     @can('permission-delete')
-                                                        <form action="{{ route('permissions.destroy', $item->id) }}" method="post"
-                                                            onsubmit="swalConfirmationOnSubmit(event, 'Are you sure you want to delete this permission?')">
-                                                            @csrf
-                                                            @method('delete')
-                                                            <x-icon.trash onclick="this.closest('form').requestSubmit()" title="Delete" />
-                                                        </form>
+                                                        <x-icon.trash onclick="confirmDelete({{ $item->id }}, '{{ $item->name }}')" title="Delete" />
                                                     @endcan
                                                 @endif
                                             </td>
@@ -74,6 +69,26 @@
         </div>
     </div>
 
+    <!-- Delete Form (hidden) -->
+    <form id="deleteForm" method="POST" style="display: none;">
+        @csrf
+        @method('DELETE')
+    </form>
+
     <!-- Vue Permission Create Modal -->
     <permission-create-modal :create-url="'{{ route('permissions.store') }}'"></permission-create-modal>
 @endsection
+
+@push('scripts')
+    <script>
+        function confirmDelete(permissionId, permissionName) {
+            swalConfirmation(`Are you sure you want to delete the permission "${permissionName}"?`).then((result) => {
+                if (result.isConfirmed) {
+                    const form = document.getElementById('deleteForm');
+                    form.action = `/admin/permissions/${permissionId}`;
+                    form.submit();
+                }
+            });
+        }
+    </script>
+@endpush

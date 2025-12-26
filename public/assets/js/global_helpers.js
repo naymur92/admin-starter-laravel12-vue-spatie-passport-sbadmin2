@@ -79,6 +79,15 @@ function swalConfirmationOnSubmit(event, msg) {
     });
 }
 
+function swalConfirmation(msg) {
+    return Swal.fire({
+        title: msg,
+        showDenyButton: true,
+        confirmButtonText: "Yes",
+        denyButtonText: `No`,
+    });
+}
+
 function convertToEnglishNumber(bnNumber) {
     if (!containsBanglaDigits(bnNumber)) return bnNumber;
 

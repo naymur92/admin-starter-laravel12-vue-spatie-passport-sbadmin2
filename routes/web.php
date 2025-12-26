@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\OAuthClientController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
@@ -41,6 +42,10 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     // roles
     Route::resource('roles', RoleController::class)->except(['create', 'edit']);
     Route::get('roles/{role}/json', [RoleController::class, 'getJson'])->name('roles.getjson');
+
+    // OAuth Clients (Password Grant)
+    Route::resource('oauth-clients', OAuthClientController::class);
+    Route::post('oauth-clients/{id}/regenerate-secret', [OAuthClientController::class, 'regenerateSecret'])->name('oauth-clients.regenerate-secret');
 });
 
 Auth::routes([

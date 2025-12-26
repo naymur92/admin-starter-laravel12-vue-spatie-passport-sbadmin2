@@ -70,6 +70,14 @@
         </li>
     @endcan
 
+    @can('oauth-client-list')
+        <li class="nav-item {{ request()->routeIs('oauth-clients.*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('oauth-clients.index') }}">
+                <i class="fas fa-key"></i>
+                <span>OAuth Clients</span></a>
+        </li>
+    @endcan
+
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
