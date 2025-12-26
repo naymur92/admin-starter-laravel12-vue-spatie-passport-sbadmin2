@@ -39,14 +39,10 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" @click="closeModal"
-                                :disabled="loading">Close</button>
-                            <button type="reset" class="btn btn-danger mr-3" @click="resetForm"
-                                :disabled="loading">Reset Form</button>
-                            <button type="submit" class="btn btn-success" :disabled="loading">
-                                <span v-if="loading" class="spinner-border spinner-border-sm mr-2"></span>
-                                {{ loading ? 'Adding...' : 'Add Permissions' }}
-                            </button>
+                            <!-- <button type="button" class="btn btn-secondary" @click="closeModal"
+                                :disabled="loading">Close</button> -->
+                            <reset-button variant="danger" text="Reset Form" @click="resetForm" :disabled="loading" />
+                            <submit-button variant="success" text="Add Permissions" :loading="loading" />
                         </div>
                     </form>
                 </div>

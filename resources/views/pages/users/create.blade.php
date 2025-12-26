@@ -62,7 +62,7 @@
 
                         </div>
                         <div class="card-footer d-flex justify-content-end">
-                            <input type="submit" value="Submit" class="btn btn-success">
+                            <x-button.submit>Save User</x-button.submit>
                         </div>
                     </form>
 

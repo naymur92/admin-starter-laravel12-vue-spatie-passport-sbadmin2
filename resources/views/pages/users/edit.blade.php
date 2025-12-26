@@ -56,7 +56,7 @@
                             </div>
                         </div>
                         <div class="card-footer d-flex justify-content-end">
-                            <input type="submit" value="Update" class="btn btn-success">
+                            <x-button.submit>Update User</x-button.submit>
                         </div>
                     </form>
 

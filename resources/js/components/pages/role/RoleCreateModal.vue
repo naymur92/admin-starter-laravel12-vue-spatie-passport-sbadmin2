@@ -20,36 +20,18 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="mb-3"><strong>Select Permissions</strong> <span class="text-danger"><i
-                                            class="fas fa-xs fa-asterisk"></i></span></label>
-                                <br>
-                                <div class="permissions p-3 border rounded"
-                                    :class="{ 'border-danger': errors.permission }">
-                                    <div class="row">
-                                        <label v-for="perm in availablePermissions" class="col-6 col-md-3"
-                                            :key="perm.id">
-                                            <input v-model="form.permissions" type="checkbox" :value="perm.name">
-                                            {{ perm.name }}
-                                        </label>
-                                        <p v-if="availablePermissions.length === 0" class="text-muted">No permissions
-                                            available</p>
-                                    </div>
-                                </div>
-                                <div v-if="errors.permission" class="text-danger small mt-2">{{ errors.permission[0] }}
-                                </div>
-                            </div>
+                                <checkbox-group v-model="form.permissions" :options="availablePermissions"
+                                    id="permissions" name="permissions" label="Select Permissions" :required="true"
+                                    :error="errors.permissions" empty-message="No permissions available"
+                                    cols="col-md-3 col-6" />
 
-                            <ul v-if="Object.keys(errors).length > 0" id="errors" class="text-danger my-2">
-                                <li v-for="(msgs, field) in errors" :key="field">{{ msgs[0] }}</li>
-                            </ul>
+                                <small class="text-muted d-block mt-2">Select at least one permission.</small>
+                            </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" @click="closeModal">Close</button>
-                            <button type="reset" class="btn btn-danger mr-3" @click="resetForm">Reset Form</button>
-                            <button type="submit" id="submit-btn" class="btn btn-success" :disabled="loading">
-                                <span v-if="loading" class="spinner-border spinner-border-sm mr-2"></span>
-                                {{ loading ? 'Creating...' : 'Add Role' }}
-                            </button>
+                            <!-- <button type="button" class="btn btn-secondary" @click="closeModal">Close</button> -->
+                            <reset-button variant="danger" text="Reset Form" @click="resetForm" />
+                            <submit-button variant="success" text="Add Role" :loading="loading" />
                         </div>
                     </form>
                 </div>

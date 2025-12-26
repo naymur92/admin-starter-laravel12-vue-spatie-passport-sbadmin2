@@ -39,7 +39,7 @@
                             </div>
                         </div>
                         <div class="card-footer d-flex justify-content-end">
-                            <input class="btn btn-primary" type="submit" value="Update Profile">
+                            <x-button.submit>Update Profile</x-button.submit>
                         </div>
                     </form>
                 </div>

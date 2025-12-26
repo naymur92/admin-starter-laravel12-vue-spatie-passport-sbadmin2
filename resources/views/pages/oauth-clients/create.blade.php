@@ -35,7 +35,7 @@
                             </div>
 
                             <div class="mb-3">
-                                <x-form.checkboxes name="grant_types" :options="$grantTypes" label="Grant Types" required />
+                                <x-form.checkbox-group name="grant_types" :options="$grantTypes" label="Grant Types" required />
                                 <span class="text-muted">Select at least one grant type.</span>
                             </div>
 

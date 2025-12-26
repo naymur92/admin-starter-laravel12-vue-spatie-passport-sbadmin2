@@ -6,7 +6,7 @@
     <input :id="id" :name="name || id" :type="type" class="form-control" :class="{ 'is-invalid': hasError }"
         :placeholder="placeholder" :disabled="disabled" :value="modelValue"
         @input="$emit('update:modelValue', $event.target.value)" />
-    <div v-if="hasError" class="invalid-feedback d-block">{{ firstError }}</div>
+    <div v-if="hasError" class="invalid-feedback d-block"><strong>{{ firstError }}</strong></div>
 </template>
 
 <script>

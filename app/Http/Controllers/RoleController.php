@@ -40,13 +40,13 @@ class RoleController extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'name' => 'required|unique:roles,name',
-                'permissions' => 'required|array',
+                'name'          => 'required|unique:roles,name',
+                'permissions'   => 'required|array',
             ],
             [
-                'name.required' => 'Please enter Role Name!',
-                'name.unique' => 'Role Name has been taken!',
-                'permissions.required' => 'Please select at least one permission!',
+                'name.required'         => 'Please enter Role Name!',
+                'name.unique'           => 'Role Name has been taken!',
+                'permissions.required'  => 'Please select at least one permission!',
             ]
         );
 
@@ -130,13 +130,13 @@ class RoleController extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'name' => 'required|unique:roles,name,' . $role->id,
-                'permissions' => 'required|array',
+                'name'          => 'required|unique:roles,name,' . $role->id,
+                'permissions'   => 'required|array',
             ],
             [
-                'name.required' => 'Please enter Role Name!',
-                'name.unique' => 'Role Name has been taken!',
-                'permissions.required' => 'Please select at least one permission!',
+                'name.required'         => 'Please enter Role Name!',
+                'name.unique'           => 'Role Name has been taken!',
+                'permissions.required'  => 'Please select at least one permission!',
             ]
         );
 

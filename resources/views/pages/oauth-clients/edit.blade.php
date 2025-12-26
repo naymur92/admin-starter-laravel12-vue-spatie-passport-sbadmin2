@@ -42,7 +42,7 @@
                                 @php
                                     $currentGrantTypes = json_decode($client->grant_types, true) ?? [];
                                 @endphp
-                                <x-form.checkboxes name="grant_types" :options="$grantTypes" :selected="$currentGrantTypes" label="Grant Types" required />
+                                <x-form.checkbox-group name="grant_types" :options="$grantTypes" :selected="$currentGrantTypes" label="Grant Types" required />
                                 <span class="text-muted">Select at least one grant type.</span>
                             </div>
 

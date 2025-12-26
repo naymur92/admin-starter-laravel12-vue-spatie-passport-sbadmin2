@@ -27,20 +27,9 @@
 
                             <!-- Permissions Checkboxes -->
                             <div class="form-group">
-                                <label><strong>Select Permissions</strong> <span class="text-danger">*</span></label>
-                                <div class="permissions p-3 border rounded"
-                                    :class="{ 'border-danger': errors.permissions }">
-                                    <div class="row">
-                                        <label v-for="perm in availablePermissions" :key="perm.id"
-                                            class="col-6 col-md-3">
-                                            <input v-model="form.permissions" type="checkbox" :value="perm.name"
-                                                :disabled="loading">
-                                            {{ perm.name }}
-                                        </label>
-                                    </div>
-                                </div>
-                                <div v-if="errors.permissions" class="text-danger small mt-2">{{ errors.permissions[0]
-                                    }}</div>
+                                <checkbox-group v-model="form.permissions" :options="availablePermissions"
+                                    id="editPermissions" name="permissions" label="Select Permissions" :required="true"
+                                    :error="errors.permissions" :disabled="loading" cols="col-md-3 col-6" />
                             </div>
 
                             <!-- General Error Messages -->
@@ -52,14 +41,10 @@
                         </div>
 
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" @click="closeModal"
-                                :disabled="loading">Close</button>
-                            <button type="reset" class="btn btn-danger" @click="resetForm"
-                                :disabled="loading">Reset</button>
-                            <button type="submit" class="btn btn-success" :disabled="loading">
-                                <span v-if="loading" class="spinner-border spinner-border-sm mr-2"></span>
-                                {{ loading ? 'Updating...' : 'Update Role' }}
-                            </button>
+                            <!-- <button type="button" class="btn btn-secondary" @click="closeModal"
+                                :disabled="loading">Close</button> -->
+                            <reset-button variant="danger" text="Reset" @click="resetForm" :disabled="loading" />
+                            <submit-button variant="success" text="Update Role" :loading="loading" />
                         </div>
                     </form>
                 </div>
@@ -92,6 +77,10 @@ export default {
         const loading = ref(false);
         const errors = ref({});
         const form = ref({
+            name: '',
+            permissions: [],
+        });
+        const originalData = ref({
             name: '',
             permissions: [],
         });
@@ -141,6 +130,12 @@ export default {
                     form.value.permissions = Array.isArray(data.permissions)
                         ? data.permissions.map(p => (typeof p === 'object' ? p.name : p))
                         : [];
+
+                    // Store original data for reset functionality
+                    originalData.value = {
+                        name: data.role.name,
+                        permissions: [...form.value.permissions],
+                    };
                 } else {
                     errors.value = { general: ['Failed to load role data'] };
                 }
@@ -158,7 +153,15 @@ export default {
         };
 
         const resetForm = () => {
-            form.value = { name: '', permissions: [] };
+            // Restore original data instead of clearing
+            if (originalData.value.name || originalData.value.permissions.length > 0) {
+                form.value = {
+                    name: originalData.value.name,
+                    permissions: [...originalData.value.permissions],
+                };
+            } else {
+                form.value = { name: '', permissions: [] };
+            }
             errors.value = {};
         };
 

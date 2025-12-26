@@ -38,7 +38,7 @@
                             </div>
                         </div>
                         <div class="card-footer d-flex justify-content-end">
-                            <input class="btn btn-primary" type="submit" value="Update Password">
+                            <x-button.submit>Update Password</x-button.submit>
                         </div>
                     </form>
                 </div>
