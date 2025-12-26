@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Laravel\Passport\Http\Controllers\AccessTokenController;
 
-Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
+Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function () {
     // Dashboard
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 

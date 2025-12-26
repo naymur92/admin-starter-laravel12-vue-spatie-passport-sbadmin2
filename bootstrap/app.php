@@ -14,7 +14,8 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->alias([
             'api.headers' => \App\Http\Middleware\ApiHeadersCheck::class,
-            'api.token.headers' => \App\Http\Middleware\TokenApiHeadersCheck::class
+            'api.token.headers' => \App\Http\Middleware\TokenApiHeadersCheck::class,
+            'admin' => \App\Http\Middleware\AdminMiddleware::class
         ]);
         $middleware->api(append: ['api.headers']);
 
