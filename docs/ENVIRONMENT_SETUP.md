@@ -1,6 +1,6 @@
 # Environment Setup Guide
 
-This guide provides detailed information about configuring the `.env` file for the Security World application.
+This guide provides detailed information about configuring the `.env` file for the Admin Template application.
 
 ## Overview
 
@@ -23,7 +23,7 @@ cp .env.example .env
 ### Basic Configuration
 
 ```env
-APP_NAME="Security World"
+APP_NAME="Admin Template"
 APP_ENV=local
 APP_KEY=base64:generated_key_here
 APP_DEBUG=true
@@ -184,7 +184,7 @@ MAIL_USERNAME=your-email@gmail.com
 MAIL_PASSWORD=your-app-password
 MAIL_ENCRYPTION=tls
 MAIL_FROM_ADDRESS="noreply@yourdomain.com"
-MAIL_FROM_NAME="Security World"
+MAIL_FROM_NAME="Admin Template"
 ```
 
 ### SendGrid
@@ -362,7 +362,7 @@ FORCE_HTTPS=true
 ### Development Environment
 
 ```env
-APP_NAME="Security World Dev"
+APP_NAME="Admin Template Dev"
 APP_ENV=local
 APP_DEBUG=true
 APP_URL=http://localhost
@@ -386,7 +386,7 @@ LOG_LEVEL=debug
 ### Production Environment
 
 ```env
-APP_NAME="Security World"
+APP_NAME="Admin Template"
 APP_ENV=production
 APP_DEBUG=false
 APP_URL=https://admintemplate.com

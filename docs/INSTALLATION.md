@@ -1,6 +1,6 @@
 # Installation Guide
 
-This guide will walk you through the installation process for the Security World application.
+This guide will walk you through the installation process for the Admin Template application.
 
 ## Prerequisites
 

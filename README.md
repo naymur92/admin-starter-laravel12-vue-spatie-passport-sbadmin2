@@ -1,4 +1,4 @@
-# Security World
+# Admin Template
 
 A secure Laravel application with OAuth2 authentication, role-based access control, file encryption, activity logging, login tracking, and configurable settings management.
 

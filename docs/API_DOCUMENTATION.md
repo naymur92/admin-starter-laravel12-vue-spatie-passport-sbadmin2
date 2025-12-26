@@ -1,6 +1,6 @@
 # API Documentation
 
-This document provides detailed information about the Security World API endpoints, specifically focusing on authentication using OAuth2.
+This document provides detailed information about the Admin Template API endpoints, specifically focusing on authentication using OAuth2.
 
 ## Base URL
 
