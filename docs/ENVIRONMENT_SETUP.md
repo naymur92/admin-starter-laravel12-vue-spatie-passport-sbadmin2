@@ -211,45 +211,9 @@ MAILGUN_ENDPOINT=api.mailgun.net
 
 ## Laravel Passport (OAuth2)
 
-```env
-PASSPORT_PERSONAL_ACCESS_CLIENT_ID=
-PASSPORT_PERSONAL_ACCESS_CLIENT_SECRET=
-```
-
-These values are automatically set when you run:
-
-```bash
-php artisan passport:install
-```
-
 **Manual Configuration:**
 
--   After running `passport:install`, the command outputs client credentials
--   Copy the "Password grant client" ID and secret
--   Paste them into your `.env` file (optional, as they're stored in the database)
-
----
-
-## File Encryption
-
-```env
-DEFUSE_KEY=
-```
-
-This key is used for encrypting uploaded files using the Defuse library.
-
-**Generate the key:**
-
-```bash
-php artisan defuse:generate
-```
-
-**Important:**
-
--   This key is automatically added to your `.env` file
--   **Never share or expose this key**
--   **Keep a secure backup** - if lost, encrypted files cannot be decrypted
--   Changing this key will make existing encrypted files unreadable
+-   Follow Laravel documentation if needed `https://laravel.com/docs/12.x/passport`
 
 ---
 
@@ -470,7 +434,6 @@ $apiKey = env('API_KEY');
 Keep a secure backup of your `.env` file, especially:
 
 -   `APP_KEY`
--   `DEFUSE_KEY`
 -   Database credentials
 -   API keys
 

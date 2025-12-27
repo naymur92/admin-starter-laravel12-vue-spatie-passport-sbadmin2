@@ -6,8 +6,9 @@ This guide will walk you through the installation process for the Admin Template
 
 Before you begin, ensure you have the following installed on your system:
 
--   **PHP 8.3 or higher**
+-   **PHP 8.2 or higher**
     -   Required extensions: OpenSSL, PDO, Mbstring, Tokenizer, XML, Ctype, JSON, BCMath
+    -   disable_functions should allow exec (for DB backups)
 -   **Composer** (latest version)
 -   **MySQL 5.7+** or **MariaDB 10.3+**
 -   **Node.js & NPM** (for frontend assets)
@@ -38,7 +39,6 @@ This will install all required PHP packages including:
 -   Laravel UI
 -   Laravel Passport
 -   Spatie Laravel Permission
--   Defuse PHP Encryption
 -   And other dependencies
 
 ### 3. Install Frontend Dependencies
@@ -125,15 +125,7 @@ This command will:
 
 -   Create encryption keys for generating secure access tokens
 
-### 10. Generate Encryption Key
-
-```bash
-php artisan defuse:generate
-```
-
-This generates a secure encryption key for file encryption and stores it in your `.env` file.
-
-### 11. Create Storage Symbolic Link
+### 10. Create Storage Symbolic Link
 
 ```bash
 php artisan storage:link
@@ -268,6 +260,14 @@ curl --location 'http://admin-template.local/api/user' \
 ## Troubleshooting
 
 ### Common Issues
+
+\*\*Issue: generateAssetPath issue.
+// config/filesystems.php
+
+'assets' => [
+'driver' => 'local',
+'root' => public_path('assets'),
+],
 
 **Issue: 500 Internal Server Error**
 

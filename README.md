@@ -1,12 +1,11 @@
 # Admin Template
 
-A secure Laravel application with OAuth2 authentication, role-based access control, file encryption, activity logging, login tracking, and configurable settings management.
+A secure Laravel application with OAuth2 authentication, role-based access control, activity logging, login tracking, and configurable settings management.
 
 ## Features
 
 -   **OAuth2 Authentication** - Laravel Passport for secure token-based authentication
 -   **Role-Based Access Control (RBAC)** - Using Spatie Laravel Permission package
--   **File Encryption** - Secure file storage with AES-256 encryption
 -   **Activity Logging** - Comprehensive audit trail of user actions
 -   **Login Tracking** - Track user login history with IP and device information
 -   **Settings Management** - Configurable application settings with caching and backup
@@ -16,12 +15,11 @@ A secure Laravel application with OAuth2 authentication, role-based access contr
 ## Technologies
 
 -   Laravel 12.x
--   PHP 8.3+
+-   PHP 8.2+
 -   MySQL/MariaDB
 -   Laravel Passport (OAuth2)
 -   Laravel UI
 -   Spatie Laravel Permission
--   Defuse PHP Encryption
 -   Mobile Detect
 -   Flasher Notifications
 
@@ -52,8 +50,6 @@ See the [API Documentation](docs/API_DOCUMENTATION.md) for API usage.
 
 ### Data Protection
 
--   AES-256 file encryption
--   Secure file storage and retrieval
 -   Secure password hashing
 
 ### Monitoring & Auditing
